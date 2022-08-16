@@ -1,0 +1,517 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
+  <style type="text/css">
+    .form-con {
+      padding: 1.3rem 1.2rem;
+      height: 4.8rem;
+      background: rgb(255, 255, 255);
+      border: 0.1rem solid rgb(207, 207, 207);
+      font-size: 18px;
+      width: 100%;
+      outline: none;
+      box-sizing: border-box;
+      border-radius: 0.6rem;
+      color: rgb(28, 28, 28);
+    }
+
+    .btn-block {
+      margin-top: 20px;
+    }
+
+    .btn-market {
+      margin-top: 15px;
+    }
+
+    .btn-exchange {
+      background: green;
+      color: #fff;
+    }
+
+    .btn-exchange-red {
+      background: red;
+      color: #fff;
+    }
+
+    .scroll {
+      overflow-y: scroll;
+      height: 280px;
+      width: auto;
+    }
+
+    .nav-design {
+      box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+
+    }
+
+    .btn-save {
+      padding-bottom: 14px;
+      padding-top: 14px;
+    }
+
+    .thead-inverse th {
+      color: #fff;
+      background-color: #292b2c;
+    }
+
+    .panel-body {
+      color: #fff;
+      background-color: #292b2c;
+    }
+  </style>
+
+  <script>
+
+    function openCity(evt, cityName) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+  <title>
+    Revenue Gold Bot
+  </title>
+</head>
+
+<!-- <div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">Trade</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">crypto news</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">settings</button>
+</div> -->
+
+
+<nav class="navbar nav-design panel-body">
+  <div class="container-fluid">
+    <center>Trading </center>
+    <!-- <ul class="nav navbar-nav">
+      <li class="active"><a  class="tablinks" onclick="openCity(event, 'London')" href="#"><h4>Trade</h4></a></li>
+      <li><a lass="tablinks" onclick="openCity(event, 'Paris')"href="#"><h4>crypto news</h4></a></li>
+      <li><a class="tablinks" onclick="openCity(event, 'Tokyo')"><h4>Settings</h4></a></li>
+    
+    </ul> -->
+  </div>
+</nav>
+
+<!-- Tab content -->
+<div id="London" class="tabcontent" style="    display: block;">
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="scroll">
+
+            <div class="panel panel-default">
+              <div class="panel-body">No Social & No Liquidity</div>
+            </div>
+            <table class="table table-bordered table-striped table-inverse">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>id</th>
+                  <th>Contract Address</th>
+                  <th>FB Count</th>
+                  <th>Twitter Count</th>
+                  <th>Telegram Count</th>
+                  <th>Price</th>
+                  <th>liquidity</th>
+                </tr>
+              </thead>
+              <tbody id="output">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <br>
+        </div>
+        <div class="col-md-12">
+          <div class="scroll">
+
+            <div class="panel panel-default">
+              <div class="panel-body"> Liquidity</div>
+            </div>
+            <table class="table table-bordered table-striped table-inverse">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>id</th>
+                  <th>Contract Address</th>
+                  <th>FB Count</th>
+                  <th>Twitter Count</th>
+                  <th>Telegram Count</th>
+
+                  <th>Price</th>
+                  <th>liquidity</th>
+                </tr>
+              </thead>
+              <tbody id="Liquidityoutput">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-12"><br></div>
+        <div class="col-md-12">
+
+          <div class="panel panel-default">
+            <div class="panel-body">Social & Liquidity</div>
+          </div>
+          <div class="scroll">
+
+            <table class="table table-bordered table-striped">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>id</th>
+                  <th>Contract Address</th>
+                  <th>FB Count</th>
+                  <th>Twitter Count</th>
+                  <th>Telegram Count</th>
+                  <th>Price</th>
+                  <th>Symbol</th>
+                  <th>Market Cap</th>
+                  <th>liquidity</th>
+                </tr>
+              </thead>
+              <tbody id="Alloutput">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+    <div class="col-md-5">
+
+      <div class="panel panel-default">
+        <div class="panel-body">Filter </div>
+      </div>
+      <label>Holder</label>
+      <form>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="HolderMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="HolderMax">
+          </div>
+        </div>
+        <label>Price</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="PriceMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="PriceMax">
+          </div>
+        </div>
+        <label>Market Cap</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="CapitalMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="CapitalMax">
+          </div>
+        </div>
+        <label>Locked %</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="LockedMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="LockedMax">
+          </div>
+        </div>
+        <label>Telegram Group Count</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="TelegramMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="TelegramMax">
+          </div>
+        </div>
+        <label>Twitter Group Count</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="TwitterMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="TwitterMax">
+          </div>
+        </div>
+        <label>Facebook Group Count</label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Min</label>
+            <input type="number" name="" class="form-control" placeholder="Min" id="FacebookMin">
+          </div>
+          <div class="col-md-6">
+            <label>Max</label>
+            <input type="number" name="" class="form-control" placeholder="Max" id="FacebookMax">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-default btn-block" style="background: #000;color: #fff;"
+              onclick="FilterData('Hello');">Filter</button>
+          </div>
+        </div>
+      </form>
+      <div id="cronStatus" class="col-md-12">
+        Cron Status
+      </div>
+    </div>
+    <div class="col-md-12">
+      <br />
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Contract Address</th>
+            <th>FB Count</th>
+            <th>Twitter Count</th>
+            <th>Telegram</th>
+            <th>Price</th>
+            <th>Locked</th>
+            <th>Market Capital</th>
+          </tr>
+        </thead>
+        <tbody id="ShowDataMSG">
+
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+</div>
+
+  <script>
+    $(document).ready(function () {
+      function getData() {
+        $.ajax({
+          type: 'POST',
+          url: 'Api/NosocialApiTable.php',
+          success: function (data) {
+            // alert(data);
+
+            $('#output').html(data);
+          }
+        });
+      }
+      getData();
+      setInterval(function () {
+        getData();
+      }, 1000);  // it will refresh your data every 1 sec*/
+
+    });
+
+
+    $(document).ready(function () {
+      function getshodataData() {
+        $.ajax({
+          type: 'POST',
+          url: 'Api/LiquidityTable.php',
+          success: function (data) {
+            // alert(data);
+
+            $('#Liquidityoutput').html(data);
+          }
+        });
+      }
+      getshodataData();
+      setInterval(function () {
+        getshodataData();
+      }, 1000);  // it will refresh your data every 1 sec*/
+
+    });
+
+    $(document).ready(function () {
+      function getallshodataData() {
+        $.ajax({
+          type: 'POST',
+          url: 'Api/AllDataTable.php',
+          success: function (data) {
+            // alert(data);
+
+            $('#Alloutput').html(data);
+          }
+        });
+      }
+      getallshodataData();
+      setInterval(function () {
+        getallshodataData();
+      }, 1000);  // it will refresh your data every 1 sec*/
+
+    });
+
+
+
+    function OrderRequest() {
+      var from_bank = $("#from_bank").val();
+      var from_amount = $("#from_amount").val();
+      var to_bank = $("#to_bank").val();
+      var to_amount = $("#to_amount").val();
+      var slipage = $("#slipage").val();
+      if (from_bank == to_bank) {
+        alert('Choose different bank');
+        return false;
+
+
+      }
+      $.ajax({
+        url: 'http://localhost/trading/InsertApi.php',
+        type: 'post',
+        data: { from_bank: from_bank, from_amount: from_amount, to_bank: to_bank, to_amount: to_amount, slipage: slipage },
+        success: function (data) {
+          console.log(data);
+          // alert(data);
+        }
+      })
+      //alert(from_bank);
+      event.preventDefault();
+    }
+  </script>
+  <script type="text/javascript">
+    function FilterData(id) {
+      //alert(id);
+      var HolderMin = $("#HolderMin").val();
+      var HolderMax = $("#HolderMax").val();
+      var PriceMin = $("#PriceMin").val();
+      var PriceMax = $("#PriceMax").val();
+      var CapitalMin = $("#CapitalMin").val();
+      var CapitalMax = $("#CapitalMax").val();
+      var LockedMin = $("#LockedMin").val();
+      var LockedMax = $("#LockedMax").val();
+      var TelegramMin = $("#TelegramMin").val();
+      var TelegramMax = $("#TelegramMax").val();
+      var TwitterMin = $("#TwitterMin").val();
+      var TwitterMax = $("#TwitterMax").val();
+      var FacebookMin = $("#FacebookMin").val();
+      var FacebookMax = $("#FacebookMax").val();
+      $.ajax({
+        url: 'https://ycgo.com/bot/Api/FilterApi.php',
+        type: 'post',
+        data: { HolderMin: HolderMin, PriceMin: PriceMin, FacebookMax: FacebookMax, FacebookMin: FacebookMin, TwitterMax: TwitterMax, TwitterMin: TwitterMin, TelegramMax: TelegramMax, TelegramMin: TelegramMin, LockedMax: LockedMax, LockedMin: LockedMin, CapitalMax: CapitalMax, CapitalMin: CapitalMin, PriceMax: PriceMax, HolderMax: HolderMax },
+        success: function (data) {
+          $("#ShowDataMSG").html(data);
+          console.log(data);
+
+        }
+      });
+      event.preventDefault();
+    }
+    /*  function FetchTable(id){
+        $.ajax({
+          url:'Api/filter_table.php',
+          type:'post',
+          data:{id:id},
+          success:function(data){
+         $("#showData").html(data);
+         console.log(data);
+          }
+    
+        });
+    event.preventDefault();
+      }*/
+
+    $(document).ready(function () {
+      function getCronStatus() {
+        $.ajax({
+          type: 'POST',
+          url: 'cronStatus.php',
+          success: function (data) {
+            // alert(data);
+
+            $('#cronStatus').html(data);
+          }
+        });
+      }
+      // getshodataData();
+      setInterval(function () {
+        getCronStatus();
+      }, 20000);  // it will refresh your data every 1 sec*/
+
+    });
+  </script>
+
+</html>
